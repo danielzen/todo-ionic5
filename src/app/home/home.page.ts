@@ -20,7 +20,7 @@ export class HomePage {
       {title: 'Data Drive the App', done: true},
       {title: 'Toggle Items', done: true},
       {title: 'Create New Items', done: true},
-      {title: 'Delete Items', done: false},
+      {title: 'Delete Items', done: true},
       {title: 'Edit Items', done: false},
     ];
   }
