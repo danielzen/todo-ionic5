@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 interface Item {
   title: string;
@@ -13,15 +14,34 @@ interface Item {
 export class HomePage {
   public items: Item [];
 
-  constructor() {
+  constructor(private alertController: AlertController) {
     this.items = [
       {title: 'ion-item', done: true},
       {title: 'Data Drive the App', done: true},
-      {title: 'Toggle Items', done: false},
-      {title: 'Create New Items', done: false},
+      {title: 'Toggle Items', done: true},
+      {title: 'Create New Items', done: true},
       {title: 'Delete Items', done: false},
       {title: 'Edit Items', done: false},
     ];
+  }
+
+  async addItem() {
+    const alert = await this.alertController.create({
+      header: 'Add Task',
+      inputs: [{name: 'task', placeholder: 'New Task'}],
+      buttons: [{text: 'Cancel', role: 'cancel'},
+        {
+          text: 'Create',
+          handler: data => {
+            if (data.task !== '') {
+              this.items.push({title: data.task, done: false});
+            }
+            return data.task;
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }
