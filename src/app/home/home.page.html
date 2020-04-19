@@ -13,7 +13,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item-sliding #slidingItem *ngFor="let item of items; index as i">
+    <ion-item-sliding *ngFor="let item of items; index as i">
     <ion-item [class.taskDone]="item.done" (click)="item.done = !item.done">
       {{item.title}}
     </ion-item>
